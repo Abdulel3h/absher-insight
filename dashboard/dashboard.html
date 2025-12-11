@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absher Insight - Dashboard</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <img src="assets/logo.png" class="logo" alt="Logo">
+        <h2>Absher Insight</h2>
+
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a class="active" href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+            <li><a href="test-model.html"><i class="fas fa-microchip"></i> Test Model</a></li>
+        </ul>
+    </div>
+
+    <div class="main">
+        <div class="navbar">
+            <h1>Dashboard</h1>
+            <div class="user"><i class="fas fa-satellite-dish"></i> Real-Time Analytics</div>
+        </div>
+
+        <div class="grid-3">
+            <div class="card">
+                <h3>Total Events</h3>
+                <div id="totalEvents">0</div>
+            </div>
+            <div class="card">
+                <h3>Suspicious Events</h3>
+                <div id="suspiciousEvents" style="color: #e74c3c;">0</div>
+            </div>
+            <div class="card">
+                <h3>Suspicious Rate</h3>
+                <div id="suspiciousRate" style="color: #f39c12;">0%</div>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="card">
+                <h3>Events by Service</h3>
+                <div style="position: relative; height: 250px;">
+                    <canvas id="chartServices"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Events Over Time</h3>
+                <div style="position: relative; height: 250px;">
+                    <canvas id="chartTimes"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Top Locations</h3>
+            <div style="position: relative; height: 300px;">
+                <canvas id="chartLocations"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

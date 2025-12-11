@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Absher Insight - Test Model</title>
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <img src="assets/logo.png" class="logo">
+        <h2>Absher Insight</h2>
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+            <li><a class="active" href="test-model.html"><i class="fas fa-microchip"></i> Test Model</a></li>
+        </ul>
+    </div>
+
+    <div class="main">
+        <div class="navbar">
+            <h1>Test AI Model</h1>
+            <div class="user">Manual Simulation</div>
+        </div>
+
+        <div class="grid-2">
+            <div class="card">
+                <h3><i class="fas fa-sliders-h"></i> Input Parameters</h3>
+                <p style="margin-bottom: 20px; color: #666; font-size: 0.9rem;">Simulate a user session to detect anomalies.</p>
+
+                <div class="form-group">
+                    <label>Service Type</label>
+                    <select id="service" class="form-input">
+                        <option value="Login">Login Attempt</option>
+                        <option value="Payment">Traffic Payment</option>
+                        <option value="Update">Profile Update</option>
+                        <option value="Password">Password Reset</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Location (Geo-IP)</label>
+                    <select id="location" class="form-input">
+                        <option value="Riyadh">Riyadh, SA </option>
+                        <option value="Jeddah">Jeddah, SA </option>
+                        <option value="London">London, UK </option>
+                        <option value="Moscow">Moscow, RU </option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Login Time (HH:MM)</label>
+                    <input id="time" type="time" class="form-input" value="10:00">
+                </div>
+
+                <div class="form-group">
+                    <label>Actions Count (Clicks)</label>
+                    <input id="actions" type="number" class="form-input" placeholder="e.g. 5" min="1">
+                </div>
+
+                <button class="btn-primary" style="width: 100%; margin-top: 10px;" onclick="predict()">
+                    <i class="fas fa-search"></i> Analyze Behavior
+                </button>
+            </div>
+
+            <div class="card" id="resultCard" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; opacity: 0.6;">
+                <i class="fas fa-fingerprint" style="font-size: 4rem; color: #ccc; margin-bottom: 20px;" id="resultIcon"></i>
+                <h3 id="resultTitle">Waiting for input...</h3>
+                <p id="resultDesc">Submit the form to see the AI prediction here.</p>
+                <div id="confidenceBox" style="display: none; margin-top: 15px; background: #eee; padding: 5px 15px; border-radius: 20px; font-weight: bold;">
+                    Confidence: <span id="confidenceScore">-</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="test-model.js"></script>
+</body>
+</html>

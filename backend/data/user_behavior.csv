@@ -1,0 +1,9 @@
+user_id,service_type,login_time,device,location,actions_count
+1001,RenewLicense,10:15,Mobile,Riyadh,3
+1001,RenewLicense,10:17,Mobile,Riyadh,4
+1002,PassportRenewal,02:00,PC,Dammam,20
+1003,DrivingTest,15:30,Mobile,Jeddah,12
+2010,AccountTransfer,03:10,PC,Riyadh,18
+3001,RenewLicense,09:05,Mobile,Abha,2
+3001,DrivingTest,22:30,PC,Abha,14
+4001,PassportRenewal,13:00,Mobile,Taif,2
