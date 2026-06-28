@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./assets/project-banner.svg" alt="Absher Insight AI project banner" />
+</p>
+
 # Absher Insight AI
 
 Absher Insight AI is a proactive digital-security prototype that simulates behavioral risk detection for government-style digital services.
@@ -9,6 +13,8 @@ The project combines a FastAPI backend, synthetic/in-memory event simulation, an
 ## Documentation
 
 - [Architecture](docs/architecture.md)
+- [Engineering Principles](docs/engineering-principles.md)
+- [Technical Decisions](docs/technical-decisions.md)
 
 ## Features
 

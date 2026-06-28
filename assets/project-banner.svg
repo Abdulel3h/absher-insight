@@ -1,0 +1,26 @@
+<svg width="1200" height="320" viewBox="0 0 1200 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Absher Insight AI project banner</title>
+  <desc id="desc">Banner for Absher Insight AI: proactive digital-security analytics prototype.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="320" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111827"/>
+      <stop offset="1" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="80" y1="80" x2="1080" y2="240" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38BDF8"/>
+      <stop offset="0.5" stop-color="#818CF8"/>
+      <stop offset="1" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="320" rx="28" fill="url(#bg)"/>
+  <path d="M78 230 C196 134 348 94 510 174 C654 244 770 118 918 132 C1010 142 1082 202 1122 120" stroke="url(#accent)" stroke-width="5" stroke-linecap="round"/>
+  <rect x="68" y="62" width="1064" height="196" rx="22" fill="#020617" fill-opacity="0.38" stroke="#E5E7EB" stroke-opacity="0.12"/>
+  <text x="104" y="122" fill="#E5E7EB" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="20" font-weight="650" letter-spacing="2">AI SECURITY ANALYTICS</text>
+  <text x="104" y="178" fill="#FFFFFF" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="52" font-weight="750">Absher Insight AI</text>
+  <text x="104" y="224" fill="#CBD5E1" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="25">FastAPI | Behavioral Rules | Synthetic Data | Dashboard</text>
+  <g transform="translate(888 90)">
+    <rect x="0" y="0" width="204" height="122" rx="16" fill="#0F172A" stroke="#818CF8" stroke-opacity="0.34"/>
+    <path d="M102 24 L160 48 V82 C160 98 136 110 102 116 C68 110 44 98 44 82 V48 L102 24Z" stroke="#CBD5E1" stroke-opacity="0.65" stroke-width="2" fill="none"/>
+    <circle cx="102" cy="72" r="13" fill="#F59E0B" fill-opacity="0.85"/>
+  </g>
+</svg>
