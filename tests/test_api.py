@@ -10,4 +10,6 @@ def test_predict():
     resp = requests.post('http://localhost:8000/predict', json=payload, timeout=5)
     assert resp.status_code == 200
     data = resp.json()
-    assert 'suspicious' in data and 'risk_score' in data
+    assert 'prediction' in data and 'probability' in data
+    assert data['prediction'] in {'Normal', 'Suspicious'}
+    assert 0 <= data['probability'] <= 1
