@@ -7,7 +7,7 @@ document.getElementById('eventForm').addEventListener('submit', async (e) => {
     location: document.getElementById('location').value || ''
   };
   const resEl = document.getElementById('result');
-  resEl.innerHTML = 'Analyzing...';
+  resEl.textContent = 'Analyzing...';
   try {
     const resp = await fetch('http://localhost:8000/predict', {
       method: 'POST',
@@ -15,14 +15,33 @@ document.getElementById('eventForm').addEventListener('submit', async (e) => {
       body: JSON.stringify(payload)
     });
     const data = await resp.json();
+    resEl.replaceChildren();
     if (data.error) {
-      resEl.innerHTML = '<p class="error">Error: ' + data.error + '</p>';
+      const error = document.createElement('p');
+      error.className = 'error';
+      error.textContent = 'Error: ' + data.error;
+      resEl.appendChild(error);
     } else {
-      resEl.innerHTML = '<h3>Result</h3>' +
-                        '<p>Suspicious: <strong>' + data.suspicious + '</strong></p>' +
-                        '<p>Risk score: <strong>' + data.risk_score + '</strong></p>';
+      const title = document.createElement('h3');
+      title.textContent = 'Result';
+      const prediction = document.createElement('p');
+      prediction.append('Prediction: ');
+      const predictionValue = document.createElement('strong');
+      predictionValue.textContent = data.prediction || 'Unknown';
+      prediction.appendChild(predictionValue);
+      const probability = document.createElement('p');
+      probability.append('Probability: ');
+      const probabilityValue = document.createElement('strong');
+      probabilityValue.textContent =
+        typeof data.probability === 'number' ? `${(data.probability * 100).toFixed(1)}%` : 'Unknown';
+      probability.appendChild(probabilityValue);
+      resEl.append(title, prediction, probability);
     }
   } catch (err) {
-    resEl.innerHTML = '<p class="error">Error: ' + err.message + '</p>';
+    resEl.replaceChildren();
+    const error = document.createElement('p');
+    error.className = 'error';
+    error.textContent = 'Error: ' + err.message;
+    resEl.appendChild(error);
   }
 });

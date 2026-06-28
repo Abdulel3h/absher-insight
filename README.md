@@ -13,6 +13,7 @@ The project combines a FastAPI backend, synthetic/in-memory event simulation, an
 ## Documentation
 
 - [Architecture](docs/architecture.md)
+- [Case Study](docs/case-study.md)
 - [Engineering Principles](docs/engineering-principles.md)
 - [Technical Decisions](docs/technical-decisions.md)
 - [Reviewer Guide](docs/reviewer-guide.md)
@@ -55,6 +56,20 @@ python -m venv .venv
 . .venv/Scripts/activate
 pip install -r requirements.txt
 uvicorn main:app --reload
+```
+
+For tests:
+
+```bash
+pip install -r requirements-dev.txt
+python -m pytest tests
+```
+
+Optional local environment:
+
+```bash
+ALLOWED_ORIGINS=http://localhost:8000,http://127.0.0.1:8000
+ENABLE_SIMULATOR=1
 ```
 
 Open the dashboard HTML files from `dashboard/` or serve them with a static server.
