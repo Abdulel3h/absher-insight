@@ -12,10 +12,18 @@ from collections import deque
 
 app = FastAPI(title="Absher Insight Backend")
 
+
+def get_allowed_origins() -> List[str]:
+    raw = os.getenv(
+        "ALLOWED_ORIGINS",
+        "http://localhost:8000,http://127.0.0.1:8000,http://localhost:5500,http://127.0.0.1:5500",
+    )
+    return [origin.strip() for origin in raw.split(",") if origin.strip()]
+
 # 1. إعدادات CORS للسماح للمتصفح بالاتصال
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=get_allowed_origins(),
     allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["*"],
 )
@@ -161,8 +169,9 @@ def simulator_loop():
         time.sleep(2) # تحديث كل ثانيتين
 
 # تشغيل المحاكي في الخلفية
-t = threading.Thread(target=simulator_loop, daemon=True)
-t.start()
+if os.getenv("ENABLE_SIMULATOR", "1").lower() in {"1", "true", "yes"}:
+    t = threading.Thread(target=simulator_loop, daemon=True)
+    t.start()
 
 # 7. تقديم الملفات الثابتة (HTML/CSS/JS)
 # تأكد أن ملفات HTML موجودة بجانب ملف main.py مباشرة
