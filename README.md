@@ -71,7 +71,11 @@ The current `/predict` response returns `prediction`, `probability`, and `detail
 
 ## Screenshots
 
-No screenshots are committed yet. Add dashboard screenshots showing normal, suspicious, and high-risk states before pinning.
+![Absher Insight overview](assets/screenshots/absher-overview.png)
+
+![Absher Insight dashboard](assets/screenshots/absher-dashboard.png)
+
+Captured from the committed dashboard HTML. Add API-backed normal, suspicious, and high-risk state captures after the backend simulator is running.
 
 ## System Design
 
@@ -104,7 +108,7 @@ tests/         API test harness
 - Add a persistent event store for reproducible analysis.
 - Add tests for suspicious and normal scenarios.
 - Add privacy and threat-model documentation.
-- Add screenshots and a short demo video.
+- Add API-backed scenario screenshots and a short demo video.
 
 ## License
 
