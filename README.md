@@ -15,6 +15,7 @@ The project combines a FastAPI backend, synthetic/in-memory event simulation, an
 - [Architecture](docs/architecture.md)
 - [Engineering Principles](docs/engineering-principles.md)
 - [Technical Decisions](docs/technical-decisions.md)
+- [Reviewer Guide](docs/reviewer-guide.md)
 
 ## Features
 
