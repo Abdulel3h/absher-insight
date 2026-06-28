@@ -6,6 +6,10 @@ Absher Insight AI is a proactive digital-security prototype that simulates behav
 
 The project combines a FastAPI backend, synthetic/in-memory event simulation, anomaly-style rules, dashboard views, and a small test harness. It is best presented as a privacy-by-design security analytics concept, not as a production security system.
 
+## Documentation
+
+- [Architecture](docs/architecture.md)
+
 ## Features
 
 - `/predict` API for service, location, login time, and activity-count risk checks
