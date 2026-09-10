@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/project-banner.svg" alt="Absher Insight AI project banner" />
+  <img src="assets/branding/cover.svg" alt="Absher Insight AI project banner" />
 </p>
 
 # Absher Insight AI
@@ -8,7 +8,7 @@ Absher Insight AI is a proactive digital-security prototype that simulates behav
 
 ## Overview
 
-The project combines a FastAPI backend, synthetic/in-memory event simulation, anomaly-style rules, dashboard views, and a small test harness. It is best presented as a privacy-by-design security analytics concept, not as a production security system.
+The project combines a FastAPI backend, synthetic/in-memory event simulation, anomaly-style rules, dashboard views, and a small test harness. It is an independent demonstration using synthetic events, with no government affiliation or production security deployment claimed.
 
 ## Documentation
 
@@ -112,14 +112,16 @@ tests/         API test harness
 
 ## Challenges
 
-- The backend currently allows all CORS origins, which is acceptable for a prototype but not production.
+- The `probability` field is assigned by rules; it is not a calibrated probability or a measured accuracy score. Dashboard totals include synthetic initial state and simulated events.
+
+- The backend reads explicit CORS origins from `ALLOWED_ORIGINS`, with localhost defaults; deployment requires an appropriate origin list.
 - The simulator and stats are in-memory, so state resets on restart.
 - The API test now checks the active `/predict` response schema.
 - Committed model/data files should be reviewed for size, provenance, and privacy.
 
 ## Future Work
 
-- Replace permissive CORS with explicit allowed origins.
+- Review the configured allowed origins for each deployment environment.
 - Add a persistent event store for reproducible analysis.
 - Add tests for suspicious and normal scenarios.
 - Add privacy and threat-model documentation.
