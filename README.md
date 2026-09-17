@@ -4,6 +4,8 @@
 
 # Absher Insight AI
 
+[![CI](https://github.com/Abdulel3h/absher-insight/actions/workflows/ci.yml/badge.svg)](https://github.com/Abdulel3h/absher-insight/actions/workflows/ci.yml)
+
 Absher Insight AI is a proactive digital-security prototype that simulates behavioral risk detection for government-style digital services.
 
 ## Overview
@@ -17,6 +19,7 @@ The project combines a FastAPI backend, synthetic/in-memory event simulation, an
 - [Engineering Principles](docs/engineering-principles.md)
 - [Technical Decisions](docs/technical-decisions.md)
 - [Reviewer Guide](docs/reviewer-guide.md)
+- [Testing and CI](docs/testing.md)
 
 ## Features
 
@@ -61,7 +64,7 @@ uvicorn main:app --reload
 For tests:
 
 ```bash
-pip install -r requirements-dev.txt
+pip install -r backend/requirements-test.txt
 python -m pytest tests
 ```
 
