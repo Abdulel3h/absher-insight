@@ -144,9 +144,9 @@
     }
   </style>
   <rect width="1280" height="640" rx="0" fill="url(#vignette)"/>
-  <text class="m eyebrow" x="60" y="50" font-size="15" fill="#5E7A74" font-weight="500">Security analytics · synthetic data</text>
+  <text class="m eyebrow" x="60" y="50" font-size="15" fill="#5E7A74" font-weight="500">Abdulelah Alkhathami</text>
   <text class="m eyebrow" x="1220" y="50" font-size="15" fill="#5E7A74" font-weight="500" text-anchor="end">Prototype / synthetic data</text>
-  <g transform="translate(944 300) scale(0.96)">
+  <g transform="translate(950 320) scale(0.92)">
     <ellipse rx="280" ry="180" fill="url(#haze)" opacity=".62"/>
     <ellipse cx="0" cy="158" rx="272.8" ry="23.1" fill="url(#pool)" opacity=".5"/><ellipse cx="0" cy="158" rx="176" ry="11" fill="#010403" opacity="0.8" filter="url(#shade)"/>
     <g class="field"><g filter="url(#glossS)" opacity="0.55"><path d="M-212 -117C-90 -107 90 -117 212 -107" fill="none" stroke="url(#glassBack)" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/></g><g filter="url(#glossS)" opacity="0.62"><path d="M-212 -61C-90 -51 90 -61 212 -51" fill="none" stroke="url(#glass)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/></g><g filter="url(#glossS)" opacity="0.6"><path d="M-212 51C-90 61 90 51 212 61" fill="none" stroke="url(#glass)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/></g><g filter="url(#glossS)" opacity="0.5"><path d="M-212 107C-90 117 90 107 212 117" fill="none" stroke="url(#glassBack)" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/></g></g>
@@ -159,11 +159,10 @@
             stroke-linecap="round" opacity=".9"/>
     </g>
   </g>
-  <text class="m eyebrow" x="64" y="150" font-size="20" fill="#22E3C5" font-weight="600">Abdulelah Alkhathami</text>
-  <text class="s" x="64" y="262" font-size="78" fill="#F4FFF9" font-weight="700" letter-spacing="-2.4">Absher Insight</text>
-  <text class="s" x="64" y="330" font-size="38" fill="url(#inkFade)" font-weight="600" letter-spacing="-.8">Order, and one break in it.</text>
-  <text class="s" x="64" y="392" font-size="20" fill="#8FA8A1">FastAPI · explainable behavioral rules · operational dashboard</text>
-  <g transform="translate(64 500)"><rect width="206" height="64" rx="18" fill="#081915" stroke="#123029"/><text class="s" x="24" y="40" font-size="17" fill="#C3D8D2" font-weight="600">Synthetic events</text></g><g transform="translate(288 500)"><rect width="206" height="64" rx="18" fill="#081915" stroke="#123029"/><text class="s" x="24" y="40" font-size="17" fill="#C3D8D2" font-weight="600">Explainable rules</text></g><g transform="translate(512 500)"><rect width="206" height="64" rx="18" fill="#081915" stroke="#123029"/><text class="s" x="24" y="40" font-size="17" fill="#C3D8D2" font-weight="600">Operational view</text></g>
-  <text class="m eyebrow" x="64" y="608" font-size="18" fill="#5E7A74" font-weight="500">abdulelah.de</text>
+  <text class="m eyebrow" x="64" y="196" font-size="22" fill="#22E3C5" font-weight="600">Security analytics · synthetic data</text>
+  <text class="s" x="64" y="310" font-size="92" fill="#F4FFF9" font-weight="700" letter-spacing="-2.8">Absher Insight</text>
+  <text class="s" x="64" y="380" font-size="42" fill="url(#inkFade)" font-weight="600" letter-spacing="-.9">Order, and one break in it.</text>
+  <text class="s" x="64" y="442" font-size="24" fill="#8FA8A1">FastAPI · explainable rules · dashboard</text>
+  <text class="m eyebrow" x="64" y="592" font-size="20" fill="#5E7A74" font-weight="500">abdulelah.de</text>
   <rect width="1280" height="640" rx="0" filter="url(#grain)" opacity="0.5" pointer-events="none"/>
 </svg>
