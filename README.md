@@ -1,82 +1,45 @@
-<picture>
-  <source media="(max-width: 600px)" srcset="assets/branding/hero-mobile.svg">
-  <img src="assets/branding/hero.svg" width="100%" alt="Absher Insight — order, and the one signal that breaks it. FastAPI, explainable behavioral rules and an operational dashboard.">
-</picture>
+<a href="https://github.com/Abdulel3h">
+  <picture>
+    <source media="(max-width: 600px)" srcset="assets/terminal-mobile.svg">
+    <img src="assets/terminal.svg" width="100%" alt="Absher Insight, explainable risk signals. Three synthetic events scored by the /predict rules: Riyadh at 10:15 with 2 actions is Normal (0.10); Jeddah at 03:20 with 4 actions is Suspicious (0.85, behavior anomaly); London at 14:05 with 3 actions is Suspicious (0.95, location mismatch).">
+  </picture>
+</a>
 
-# Absher Insight
+**A behavioural-risk prototype that scores access events with explainable rules and shows the unusual ones on an operations dashboard.**
 
-A behavioral-risk prototype for government-style digital services: it scores each access event against explainable rules and surfaces the unusual ones on an operational dashboard.
+Prototype on synthetic data. An independent demonstration, **not affiliated with Absher or any government entity**, and not a deployed security system.
 
-**Status: prototype, synthetic data.** Every event is synthetic or simulated in memory. This is an independent demonstration — **not affiliated with Absher or any government entity**, and not a deployed security system.
-
-## Problem
-
-Account-takeover signals in a citizen services platform are behavioural, not cryptographic: the same credentials used from an unusual place, at an unusual hour, at an unusual rate. An operations team needs to see that pattern and, just as importantly, needs to be told *why* an event was flagged.
-
-## Solution
-
-Absher Insight scores each access event with rules that state their own reasoning — unusual location, late-night access, high action volume — and keeps a live operational picture of what is happening across services. Explainability is the point: every flag comes back with the details that produced it.
-
-## How it works
+###### HOW IT WORKS
 
 1. **Receive an event.** `POST /predict` takes service type, location, login time and action count.
-2. **Apply explainable rules.** The rules engine checks unusual location, late-night access and high action volume.
-3. **Answer with reasons.** The response carries `prediction`, `probability` and `details` — `probability` is assigned by those rules, not a calibrated model score.
-4. **Aggregate.** In-memory state tracks totals, suspicious events, top services and locations, and a recent timeseries at `/api/stats`.
-5. **Keep it moving.** An optional background simulator keeps the dashboard populated.
+2. **Apply the rules.** A location outside the listed Saudi cities, a login between 00:00 and 04:59, or more than 20 actions flags the event.
+3. **Answer with reasons.** The response carries `prediction`, a rule-assigned `probability` and `details`.
+4. **Aggregate.** `/api/stats` keeps totals, suspicious events, top services and locations in memory; an optional simulator keeps the dashboard moving.
 
-## Architecture
+###### EVIDENCE
 
-```text
-Dashboard HTML/CSS/JS
-  -> FastAPI backend
-  -> /predict updates in-memory event state
-  -> /api/stats exposes operational dashboard data
-  -> optional joblib model utilities support anomaly-model experiments
-```
+- The hero's three events return exactly those predictions and probabilities under the current rules in `backend/main.py`.
+- `tests/test_api.py` checks the `/predict` response schema and a suspicious case.
+- The static dashboard in `dashboard/` reads live statistics from `/api/stats`.
 
-| Component | Responsibility |
-|---|---|
-| `backend/main.py` | FastAPI app, CORS, rules engine, simulator, `/api/stats` |
-| `backend/analytics.py` | Event aggregation helpers |
-| `backend/inference.py` | Loads optional anomaly-model artifacts |
-| `dashboard/` | Browser dashboard |
-| `tests/` | API test covering the active `/predict` response schema |
+**Not claimed:** `probability` is assigned by the rules, not a calibrated model score. The committed scikit-learn artifacts support experiments only; the live path is rule-based. State resets on restart, and no real citizen data is used anywhere. [All limitations](docs/overview.md#limitations)
 
-## Trust and honesty about the numbers
-
-- `probability` is **rule-assigned**, not a calibrated probability and not a measured accuracy score.
-- Dashboard totals include synthetic initial state and simulated events.
-- The service reads explicit CORS origins from `ALLOWED_ORIGINS` with localhost defaults.
-- No real citizen data is used anywhere in this repository.
-
-## Verified capabilities
-
-- `/predict` risk check over service, location, login time and action count
-- Rule-based detection for unusual location, late-night access and high action volume
-- Live in-memory statistics: totals, suspicious events, top services and locations, recent timeseries
-- Background simulator to keep the dashboard active
-- Static dashboard for visualising risk and activity
-- Separate joblib/scikit-learn inference utilities for anomaly-model experiments
-
-## Screenshots
+<details>
+<summary>Screenshots</summary>
 
 ![Absher Insight overview](assets/screenshots/absher-overview.png)
 
 ![Absher Insight dashboard](assets/screenshots/absher-dashboard.png)
 
 Captured from the committed dashboard HTML.
+</details>
 
-## Tech stack
-
-Python · FastAPI · Pydantic · scikit-learn · pandas · NumPy · joblib
-
-## Quick start
+###### QUICK START
 
 ```bash
 cd backend
 python -m venv .venv
-. .venv/Scripts/activate
+. .venv/Scripts/activate           # macOS/Linux: . .venv/bin/activate
 pip install -r requirements.txt
 uvicorn main:app --reload
 ```
@@ -89,46 +52,10 @@ curl -X POST http://localhost:8000/predict \
   -d "{\"service_type\":\"Traffic\",\"location\":\"Riyadh\",\"login_time\":\"10:15\",\"actions_count\":2}"
 ```
 
-Run the tests:
+Run the tests with `pip install -r requirements-dev.txt` and `python -m pytest tests`. Open the dashboard from `dashboard/` or serve it with a static server. [Optional environment](docs/overview.md#quick-start)
 
-```bash
-pip install -r requirements-dev.txt
-python -m pytest tests
-```
+###### DOCUMENTATION
 
-Optional local environment:
+[Overview](docs/overview.md) · [Architecture](docs/architecture.md) · [Case study](docs/case-study.md) · [Engineering principles](docs/engineering-principles.md) · [Technical decisions](docs/technical-decisions.md) · [Reviewer guide](docs/reviewer-guide.md) · [Case study on abdulelah.de](https://www.abdulelah.de/projects/absher-insight-ai)
 
-```bash
-ALLOWED_ORIGINS=http://localhost:8000,http://127.0.0.1:8000
-ENABLE_SIMULATOR=1
-```
-
-Open the dashboard files from `dashboard/`, or serve them with a static server.
-
-## Limitations
-
-- **Synthetic only.** No real events, no production deployment, no affiliation with any government service.
-- **Rules, not a trained detector.** The committed model artifacts support experiments; the live path is rule-based.
-- **In-memory state.** The simulator and statistics reset on restart; there is no persistent event store.
-- **Coverage.** Tests cover the `/predict` schema; suspicious and normal scenario coverage is still open.
-- **Committed artifacts.** Model and data files should be reviewed for size, provenance and privacy.
-
-## Repository structure
-
-```text
-backend/       FastAPI service, analytics, model inference, data, model files
-dashboard/     Static frontend dashboard
-tests/         API test harness
-```
-
-## Documentation
-
-[Architecture](docs/architecture.md) · [Case study](docs/case-study.md) · [Engineering principles](docs/engineering-principles.md) · [Technical decisions](docs/technical-decisions.md) · [Reviewer guide](docs/reviewer-guide.md) · [Branding assets](assets/branding/README.md)
-
-## License
-
-No license file is currently present. All rights are reserved by default unless a license is added.
-
-## Contact
-
-**Abdulelah Alkhathami** · [Portfolio](https://abdulelah.de) · [GitHub](https://github.com/Abdulel3h) · [Email](mailto:me@abdulelah.de)
+<sub>[Abdulelah Alkhathami](https://github.com/Abdulel3h) · [abdulelah.de](https://www.abdulelah.de) · No license file yet, so all rights are reserved by default.</sub>
